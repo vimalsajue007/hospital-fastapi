@@ -4,12 +4,11 @@ import models
 import schemas
 from database import engine, SessionLocal
 
-# Create tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Dependency for DB session
+# Dependency for DB
 def get_db():
     db = SessionLocal()
     try:
@@ -17,7 +16,7 @@ def get_db():
     finally:
         db.close()
 
-# -------------------- DOCTOR APIs --------------------
+# doctor api
 
 @app.post("/doctors")
 def create_doctor(doctor: schemas.Doctor, db: Session = Depends(get_db)):
@@ -42,7 +41,7 @@ def get_doctor(doctor_id: int, db: Session = Depends(get_db)):
     
     return doctor
 
-# -------------------- PATIENT APIs --------------------
+# patient api
 
 @app.post("/patients")
 def create_patient(patient: schemas.Patient, db: Session = Depends(get_db)):
