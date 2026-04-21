@@ -27,8 +27,8 @@
 - Run Server  
 - Open Browser  
 
-##API Access
+## API Access
 Swagger UI → http://127.0.0.1:8000/docs
 
-##Testing
+## Testing
 Swagger UI
